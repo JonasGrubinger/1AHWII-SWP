@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de-At">
+    <head>
+        <title>Functions</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <h1>Functions</h1>
+        <canvas id="scene" width="1000" height="1000" style="border: 1px dashed black"></canvas>
+        <script>
+/** @type {CanvasRenderingContext2D} */
+let ctx = scene.getContext("2d");
+
+//Rechtecke zeichnen geht mit einer einzigen Anweisung
+// ctx.fillRect(150, 50, 150, 150)
+
+//Kreise zeichnen ist komplizierter ...
+// ctx.beginPath();
+// ctx.arc(200, 300, 40, 0, Math.PI * 2);
+// ctx.stroke();
+
+// ...aber wir können es uns selber leichter machen,
+// indem wir uns eine Funktion definieren.
+
+// Funktionsdefinition - Funktion bekommt einen Namen durch Zuweisung an eine Variable
+// Name ist beliebig, soll aber sprechend sein
+// "x", "y" und "radius" sind Funktionsparameter und werden bei jedem Funktionsaufruf
+// vom Aufrufer übergeben ( ansonsten würde ja immer der gleiche Kreis gezeichnet werden).
+// Anweisungen innerhalb"{" und "}" werden bei jedem Funktionsaufruf ausgeführt.
+let fillCircle = (x, y, radius) =>
+{
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.fill();
+}
+// Funkrionsaufruf - Funktion gehört nicht zum "ctx"-Objekt, deshalb wir dsie ohne 
+// "ctx." aufgerufen.
+fillCircle(100, 150, 40, "blue")
+fillCircle(20, 20, 10, "magenta")
+
+
+let strokeCircle = () =>
+{
+    ctx.beginPath();
+    ctx.arc(400, 300, 40, 0, 2 * Math.PI)
+    ctx.stroke()
+}
+strokeCircle()
+
+
+let strokeColorCircle = () =>
+{
+    ctx.fillStyle = "blue"
+}
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>
